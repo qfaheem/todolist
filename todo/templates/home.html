@@ -1,0 +1,29 @@
+{% extends 'nav.html' %}
+{% block nav %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To Do List</title>
+</head>
+<body>
+<h1>FAHEEM QURESHI</h1>
+<h2>MECHANICAL ENGG</h2>
+<h2>{{name}} accesd at {{done}}</h2>
+<br>{{data.item}}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning" role="alert">
+{{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<table class="table table-dark">
+	<tr><th>Task To Do</th><th>Status</th><th>Delete</th></tr>
+{% for data in list %}
+ 	<tr><td>{{data.item}}</td><td>{{data.complete}}</td><td><a href="{% url 'delete' data.id%}"> Delete</a></td></tr>
+{% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}
